@@ -20,6 +20,7 @@ const slides = [
 let nbSlides = slides.length;
 
 // Add dots
+
 for (let i = 0; i < nbSlides; i++) {
 	let dots = document.querySelector("#banner > .dots");
 	let dot = document.createElement('div')
@@ -28,12 +29,16 @@ for (let i = 0; i < nbSlides; i++) {
 }
 
 // Change slide on click
+
 let arrows = document.querySelectorAll("#banner > .arrow");
 let arrowLeft = document.querySelector("#banner > .arrow_left");
+
 let bannerImg = document.querySelector("#banner > .banner-img");
 let bannerText = document.querySelector("#banner > p");
 let allDots = document.querySelectorAll("#banner > .dots > .dot");
+
 let i = 0;
+
 allDots[i].classList.add('dot_selected');
 
 arrows.forEach(arrow => {
