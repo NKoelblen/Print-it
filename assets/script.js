@@ -17,20 +17,35 @@ const slides = [
 	}
 ]
 
-let arrowLeft = document.getElementsByClassName("arrow_left");
-arrowLeft[0].addEventListener("click", () => {
-	console.log("Vous avez cliqué sur la flèche gauche")
-});
-let arrowRight = document.getElementsByClassName("arrow_right");
-arrowRight[0].addEventListener("click", () => {
-	console.log("Vous avez cliqué sur la flèche droite")
-});
-
 let nbSlides = slides.length;
 
+// Add dots
 for (let i = 0; i < nbSlides; i++) {
-	let dots = document.getElementsByClassName("dots");
+	let dots = document.querySelector("#banner > .dots");
 	let dot = document.createElement('div')
 	dot.classList.add('dot');
-	dots[0].appendChild(dot);
+	dots.appendChild(dot);
 }
+
+let arrows = document.querySelectorAll("#banner > .arrow");
+let arrowLeft = document.querySelector("#banner > .arrow_left");
+let bannerImg = document.querySelector("#banner > .banner-img");
+let bannerText = document.querySelector("#banner > p");
+let allDots = document.querySelectorAll("#banner > .dots > .dot");
+let i = "0";
+allDots[i].classList.add('dot_selected');
+
+arrows.forEach(arrow => {
+	arrow.addEventListener("click", () => {
+		allDots[i].classList.remove('dot_selected');
+		if (arrow === arrowLeft) {
+			i--;
+		}
+		else {
+			i++;
+		}
+		bannerImg.setAttribute("src", "./assets/images/slideshow/" + slides[i]["image"]);
+		bannerText.innerHTML = slides[i]["tagLine"];
+		allDots[i].classList.add('dot_selected');
+	});
+});
