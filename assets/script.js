@@ -17,12 +17,20 @@ const slides = [
 	}
 ]
 
-let arrowLeft = document.querySelectorAll(".arrow_left");
+let arrowLeft = document.getElementsByClassName("arrow_left");
 arrowLeft[0].addEventListener("click", () => {
 	console.log("Vous avez cliqué sur la flèche gauche")
 });
-
-let arrowRight = document.querySelectorAll(".arrow_right");
+let arrowRight = document.getElementsByClassName("arrow_right");
 arrowRight[0].addEventListener("click", () => {
 	console.log("Vous avez cliqué sur la flèche droite")
 });
+
+let nbSlides = slides.length;
+
+for (let i = 0; i < nbSlides; i++) {
+	let dots = document.getElementsByClassName("dots");
+	let dot = document.createElement('div')
+	dot.classList.add('dot');
+	dots[0].appendChild(dot);
+}
