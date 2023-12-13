@@ -27,23 +27,34 @@ for (let i = 0; i < nbSlides; i++) {
 	dots.appendChild(dot);
 }
 
+// Change slide on click
 let arrows = document.querySelectorAll("#banner > .arrow");
 let arrowLeft = document.querySelector("#banner > .arrow_left");
 let bannerImg = document.querySelector("#banner > .banner-img");
 let bannerText = document.querySelector("#banner > p");
 let allDots = document.querySelectorAll("#banner > .dots > .dot");
-let i = "0";
+let i = 0;
 allDots[i].classList.add('dot_selected');
 
 arrows.forEach(arrow => {
 	arrow.addEventListener("click", () => {
 		allDots[i].classList.remove('dot_selected');
 		if (arrow === arrowLeft) {
+			if (i === 0) {
+				i = nbSlides - 1;
+			}
+			else {
 			i--;
+			}
 		}
 		else {
+			if (i === nbSlides - 1) {
+				i = 0;
+			} else {
 			i++;
+			}
 		}
+		console.log(i);
 		bannerImg.setAttribute("src", "./assets/images/slideshow/" + slides[i]["image"]);
 		bannerText.innerHTML = slides[i]["tagLine"];
 		allDots[i].classList.add('dot_selected');
