@@ -17,34 +17,28 @@ const slides = [
 	}
 ]
 
-let nbSlides = slides.length;
+const nbSlides = slides.length;
 
 // Add dots
 
 for (let i = 0; i < nbSlides; i++) {
-	let dots = document.querySelector("#banner > .dots");
-	let dot = document.createElement('div')
+	const dot = document.createElement('div')
 	dot.classList.add('dot');
-	dots.appendChild(dot);
+	document.querySelector("#banner > .dots").appendChild(dot);
 }
 
 // Change slide on click
 
-let arrows = document.querySelectorAll("#banner > .arrow");
-let arrowLeft = document.querySelector("#banner > .arrow_left");
-
-let bannerImg = document.querySelector("#banner > .banner-img");
-let bannerText = document.querySelector("#banner > p");
-let allDots = document.querySelectorAll("#banner > .dots > .dot");
+const dots = document.querySelectorAll("#banner > .dots > .dot");
 
 let i = 0;
 
-allDots[i].classList.add('dot_selected');
+dots[i].classList.add('dot_selected');
 
-arrows.forEach(arrow => {
+document.querySelectorAll("#banner > .arrow").forEach(arrow => {
 	arrow.addEventListener("click", () => {
-		allDots[i].classList.remove('dot_selected');
-		if (arrow === arrowLeft) {
+		dots[i].classList.remove('dot_selected');
+		if (arrow === document.querySelector("#banner > .arrow_left")) {
 			if (i === 0) {
 				i = nbSlides - 1;
 			}
@@ -59,9 +53,8 @@ arrows.forEach(arrow => {
 			i++;
 			}
 		}
-		console.log(i);
-		bannerImg.setAttribute("src", "./assets/images/slideshow/" + slides[i]["image"]);
-		bannerText.innerHTML = slides[i]["tagLine"];
-		allDots[i].classList.add('dot_selected');
+		document.querySelector("#banner > .banner-img").setAttribute("src", "./assets/images/slideshow/" + slides[i]["image"]);
+		document.querySelector("#banner > p").innerHTML = slides[i]["tagLine"];
+		dots[i].classList.add('dot_selected');
 	});
 });
